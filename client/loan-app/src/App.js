@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from "./pages/Footer";
-import Home from "./pages/Home";
+import Home2 from "./pages/Home2";
+// import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Loan from "./pages/Loan";
 
@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home2 />}></Route>
         <Route path="/loan" element={<Loan />}></Route>
         <Route
           path="*"
