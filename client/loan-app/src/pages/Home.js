@@ -1,5 +1,7 @@
 import React from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Footer from "./Footer";
+
 
 function Home() {
   return <div class="container-fluid">
@@ -34,7 +36,9 @@ function Home() {
           </div>
           </div>
   </div>
-  </div>;
+  <Footer></Footer>
+  </div>
+;
 }
 
 
