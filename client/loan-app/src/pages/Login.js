@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
 
 function Login() {
+  const [isSignUp, setIsSignUp] = useState(false);
+
+  const switchForm = () => {
+    setIsSignUp((prev) => {
+      return !prev;
+    });
+  };
+
   return (
     <Grid container sx={{ height: "100vh" }}>
       <Grid
@@ -45,6 +55,38 @@ function Login() {
               mt: 3,
             }}
           >
+            {isSignUp && (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="first-name"
+                  label="First name"
+                  name="firstName"
+                  autoComplete="first-name"
+                  autoFocus
+                  sx={{ mr: 2 }}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="last-name"
+                  label="Last name"
+                  name="lastName"
+                  autoComplete="last-name"
+                  sx={{ ml: 2 }}
+                />
+              </Box>
+            )}
             <TextField
               margin="normal"
               required
@@ -65,6 +107,25 @@ function Login() {
               id="password"
               autoComplete="current-password"
             />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              {isSignUp ? "Sign up" : "Sign in"}
+            </Button>
+            <Link
+              component="button"
+              type="button"
+              variant="body2"
+              onClick={switchForm}
+              sx={{ alignSelf: "flex-end" }}
+            >
+              {isSignUp
+                ? "Already have an account? Sign in"
+                : "Don't have an account? Sign Up"}
+            </Link>
           </Box>
         </Box>
       </Grid>
