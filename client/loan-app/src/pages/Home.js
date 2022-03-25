@@ -39,6 +39,10 @@ function Home() {
   <Footer></Footer>
   </div>
 ;
+import Layout from "../components/Layout";
+
+function Home() {
+  return <Layout>Home</Layout>;
 }
 
 

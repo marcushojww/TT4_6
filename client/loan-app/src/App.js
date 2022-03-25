@@ -2,14 +2,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./pages/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Loan from "./pages/Loan";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/loan" element={<Loan />}></Route>
         <Route
           path="*"
           element={
