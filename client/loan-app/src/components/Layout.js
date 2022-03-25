@@ -21,13 +21,24 @@ function Layout({ children }) {
           to={"/"}
           style={({ isActive }) => ({
             textDecoration: "none",
-            color: isActive ? "white" : "",
+            color: isActive ? "white" : "grey",
+            fontWeight: isActive ? "bold" : "normal",
+            marginLeft: "100px",
           })}
         >
           Home
         </NavLink>
-
-        <NavLink to={"/requestLoan"}>Request for loan</NavLink>
+        <NavLink
+          to={"/loan"}
+          style={({ isActive }) => ({
+            textDecoration: "none",
+            fontWeight: isActive ? "bold" : "normal",
+            color: isActive ? "white" : "grey",
+            marginLeft: "50px",
+          })}
+        >
+          Request for loan
+        </NavLink>
       </Box>
       <Box>{children}</Box>
     </Box>

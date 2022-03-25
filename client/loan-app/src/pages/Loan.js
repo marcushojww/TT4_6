@@ -1,8 +1,9 @@
-import { useState } from "react";
-import "./Loan.css";
-import FormInput from "./components/Form";
+import React, { useState } from "react";
+import "../Loan.css";
+import FormInput from "../components/Form";
+import Layout from "../components/Layout";
 
-const App = () => {
+function Loan() {
   const [values, setValues] = useState({
     username: "",
     password: "",
@@ -34,12 +35,11 @@ const App = () => {
       name: "Amount",
       type: "amount",
       placeholder: "Amount",
-      errorMessage:
-        "Amount should be in values!",
+      errorMessage: "Amount should be in values!",
       label: "Amount",
       pattern: `/^[0-9]*$/`,
       required: true,
-    }
+    },
   ];
 
   const handleSubmit = (e) => {
@@ -51,21 +51,23 @@ const App = () => {
   };
 
   return (
-    <div className="loan">
-      <form onSubmit={handleSubmit}>
-        <h1>Request for loan</h1>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <button>Submit</button>
-      </form>
-    </div>
+    <Layout>
+      <div className="loan">
+        <form onSubmit={handleSubmit}>
+          <h1>Request for loan</h1>
+          {inputs.map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={values[input.name]}
+              onChange={onChange}
+            />
+          ))}
+          <button>Submit</button>
+        </form>
+      </div>
+    </Layout>
   );
-};
+}
 
 export default Loan;

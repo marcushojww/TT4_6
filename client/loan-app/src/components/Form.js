@@ -5,7 +5,6 @@ const FormInput = (props) => {
   const [focused, setFocused] = useState(false);
   const { label, errorMessage, onChange, id, ...inputProps } = props;
 
-
   function handleFocus(e) {
     setFocused(true);
   }
@@ -28,4 +27,4 @@ const FormInput = (props) => {
   );
 };
 
-export default Form;
+export default FormInput;
