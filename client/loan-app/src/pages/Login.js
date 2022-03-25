@@ -1,20 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import "../style.css";
+import Alert from "@mui/material/Alert";
 
 function Login() {
+  let navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
-  const [state, setstate] = useState(false);
-  const toggleBtn = () => {
-    setstate((prevState) => !prevState);
-  };
 
   const switchForm = () => {
     setIsSignUp((prev) => {
@@ -36,21 +32,22 @@ function Login() {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-      ></Grid>
+      />
       <Grid item xs={12} sm={8} md={5}>
         <Box
           sx={{
-            mt: 32,
             mx: 4,
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
             height: "100%",
           }}
         >
           <Typography component="h1" variant="h5">
-            Welcome to DBS Loan Management
+            Welcome to your DBS App
           </Typography>
+
           <Box
             component="form"
             noValidate
@@ -58,7 +55,7 @@ function Login() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              width: "100%",
+              width: "80%",
               mt: 3,
             }}
           >
@@ -114,10 +111,18 @@ function Login() {
               id="password"
               autoComplete="current-password"
             />
-            <button className="btn" onClick={toggleBtn}>
-              {state ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            </button>
-
+            {isSignUp && (
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="confirmPassword"
+                label="Confirm password"
+                type="password"
+                id="confirm-password"
+                autoComplete="confirm-password"
+              />
+            )}
             <Button
               type="submit"
               fullWidth
@@ -126,6 +131,7 @@ function Login() {
             >
               {isSignUp ? "Sign up" : "Sign in"}
             </Button>
+
             <Link
               component="button"
               type="button"
