@@ -50,13 +50,15 @@ function Home2() {
         >
           <Typography component="h5" variant="h5">
             Your Account Balance:
+            
           </Typography>
           {accBalance && (
             <Typography component="h5" variant="h5">
-              {accBalance}
+              ${accBalance}
             </Typography>
           )}
         </Box>
+<<<<<<< HEAD
         {/* {accLoans &&
           accLoans.map( (loan) => {
             return (
@@ -83,6 +85,29 @@ function Home2() {
               </Box>
             );
           })} */}
+=======
+        <Box
+          sx={{
+            width: 3 / 6,
+            borderRadius: "0.25rem",
+            boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            mt: 4,
+            p: 4,
+          }}
+        >
+          <Typography component="h5" variant="h5">
+            Your Loan Amount:
+          </Typography>
+          {loanAmount && (
+            <Typography component="h5" variant="h5">
+              ${loanAmount}
+            </Typography>
+          )}
+        </Box>
+>>>>>>> d1062ea92b8da93a0743c863aa95762e6cff6ae9
       </Box>
     </Layout>
   );

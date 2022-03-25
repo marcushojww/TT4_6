@@ -38,13 +38,14 @@ router.get("/customerbalance/by-cid", (request, response) => {
   );
 });
 
-// get all loans of 1 customer by customer id
+// get all loans with loan amounts of 1 customer by customer id
 router.get("/customerloans/by-cid", (request, response) => {
   //live database data
   database.connection.query(
-    `select LoanId
-        from customerloan 
-        where CustomerId = '${request.query.customerId}'`, // the SQL query
+    `select l.LoanId, l.loan_amount
+        from customerloan as c, loan as l
+        where CustomerId = '${request.query.customerId}' and 
+        c.LoanId = l.LoanId`, // the SQL query
     (errors, records) => {
       if (errors) {
         console.log(errors);
@@ -78,6 +79,7 @@ router.get("/loan_amount/by-lid", (request, response) => {
 router.post("/customerloan/add", (request, response) => {
   // live database data
   let customerloan = request.body;
+  console.log(response.body)
   database.connection.query(
     `Insert into 
         customerloan (CustomerLoanId, CustomerId, LoanId)
