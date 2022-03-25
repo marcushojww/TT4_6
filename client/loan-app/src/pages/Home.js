@@ -2,7 +2,6 @@ import React from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./Footer";
 
-
 function Home() {
   return <div class="container-fluid">
   <div class="row content">
@@ -37,13 +36,9 @@ function Home() {
           </div>
   </div>
   <Footer></Footer>
-  </div>
-;
-import Layout from "../components/Layout";
 
-function Home() {
-  return <Layout>Home</Layout>;
-}
+  </div>
+};
 
 
 export default Home;

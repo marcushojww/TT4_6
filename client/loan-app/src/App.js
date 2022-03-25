@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from "./pages/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Loan from "./pages/Loan";
+import Payback from "./pages/Payback";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/loan" element={<Loan />}></Route>
+        <Route path="/payback" element={<Payback />}></Route>
         <Route
           path="*"
           element={
