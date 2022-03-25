@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 
 function Layout({ children }) {
   const navigate = useNavigate();
