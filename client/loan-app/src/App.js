@@ -3,6 +3,7 @@ import Home2 from "./pages/Home2";
 // import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Loan from "./pages/Loan";
+import Payback from "./pages/Payback";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/" element={<Home2 />}></Route>
         <Route path="/loan" element={<Loan />}></Route>
+        <Route path="/payback" element={<Payback />}></Route>
         <Route
           path="*"
           element={
