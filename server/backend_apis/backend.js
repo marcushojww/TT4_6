@@ -38,6 +38,24 @@ router.get("/customerbalance/by-cid", (request, response) => {
   );
 });
 
+// get all loans of 1 customer by customer id
+router.get("/customerloans/by-cid", (request, response) => {
+  //live database data
+  database.connection.query(
+    `select LoanId
+        from customerloan 
+        where CustomerId = '${request.query.customerId}'`, // the SQL query
+    (errors, records) => {
+      if (errors) {
+        console.log(errors);
+        response.status(500).send("An error occured in the backend");
+      } else {
+        response.status(200).send(records);
+      }
+    }
+  );
+});
+
 // getting loan_amount by loan id
 router.get("/loan_amount/by-lid", (request, response) => {
   //live database data
@@ -58,14 +76,12 @@ router.get("/loan_amount/by-lid", (request, response) => {
 
 // adding new loan into customerloan table and loan table(not yet done)
 router.post("/customerloan/add", (request, response) => {
-
-  
   // live database data
-  let customerLoan = request.body;
+  let customerloan = request.body;
   database.connection.query(
     `Insert into 
         customerloan (CustomerLoanId, CustomerId, LoanId)
-        values (${customerLoan.customerloanid},${customerLoan.customerid},'${customerLoan.loanid}')`, //the SQL query
+        values ('${customerloan.customerloanid}','${customerloan.customerid}','${customerloan.loanid}')`, //the SQL query
     (errors, records) => {
       if (errors) {
         console.log(errors);
@@ -77,19 +93,26 @@ router.post("/customerloan/add", (request, response) => {
   );
 });
 
-// updating payment and loan table with amount paid
-router.patch("/payment/update", (request, response) => {
+// updating payment(not done yet) and loan table with amount paid (not working yet)
+router.patch("/loan/update", (request, response) => {
+    const { loanId } = request.params;
+    const { loanPaid } = request.body;
+  
+    const singleLoanData = loan.find((loanData) => LoanId === loanId); // returns the first element that is true
 
-    const {id} = req.params;
-    const { firstName, lastName, age } = req.body;
-
-    const user= users.find((user) => user.id === id); // returns the first element that is true
-
-    if (firstName) user.firstName = firstName;
-    if (lastName) user.lastName = lastName;
-    if (age) user.age = age;
-
-    res.send(`User with the id ${id} has been updated!`)
-})
+    database.connection.query(
+      `Update loan
+      Set loan_amount = ${singleLoanData.loan_amount += loanPaid}
+      where LoanId = ${loanId}`,
+      (errors, records) => {
+        if (errors) {
+          console.log(errors);
+          response.status(500).send("Some error occured at the backend");
+        } else {
+          response.status(200).send(`Updated loan with LoanId = ${loanId}!`);
+        }
+      }
+    );
+  });
 
 module.exports = { router }; // to allow the whole module to be exported to another file
