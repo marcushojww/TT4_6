@@ -6,6 +6,60 @@ router = express.Router();
 // created a router object, so that we can write functions for the API
 
 // testing if apis work, calling all customer table details
+
+//authentication
+router.post("/addUser", (request,response) => {
+  // live database data
+  let user = request.body;
+  const hash = crypto.createHash('sha256').update(user.password).digest('hex');
+  database.connection.query(
+      `CREATE TABLE if not exists
+      Users (Username VARCHAR(50), Password VARCHAR(68))`, // the SQL query
+      (errors,records) => {
+          if (errors) {
+              console.log(errors);
+              response.status(500).send("Some error occured at the backend");
+          } else {
+              response.status(200).send("Created new account!");
+          }
+      }
+  )
+  database.connection.query(
+      `INSERT INTO  
+      Users (Username, Password)
+      values (${user.username}, ${hash}')`, // the SQL query
+      (errors,records) => {
+          if (errors) {
+              console.log(errors);
+              response.status(500).send("Some error occured at the backend");
+          } else {
+              response.status(200).send("Created new account!");
+          }
+      }
+  )
+})
+
+router.post("/authenticateUser", (request,response) => {
+  // live database data
+  let user = request.body;
+  const hash = crypto.createHash('sha256').update(user.password).digest('hex');
+  database.connection.query(
+      `SELECT EXISTS (
+          SELECT *
+          FROM Users
+          WHERE username = '${user.username}' AND password = '${hash}''
+      )`, // the SQL query
+      (errors,records) => {
+          if (errors) {
+              console.log(errors);
+              response.status(500).send("Some error occured at the backend");
+          } else if (sql) {
+              response.status(200).send(records); // if 0, disallow. If 1, allow.
+          }
+      }
+  )
+})
+
 router.get("/customer/all", (request, response) => {
   database.connection.query(
     `select * from customer`, // the SQL query
