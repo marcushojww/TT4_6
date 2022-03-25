@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate, Outlet, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-function Layout() {
+function Layout({ children }) {
   const navigate = useNavigate();
 
   return (
@@ -18,18 +18,18 @@ function Layout() {
         }}
       >
         <NavLink
-          to={"/home"}
+          to={"/"}
           style={({ isActive }) => ({
+            textDecoration: "none",
             color: isActive ? "white" : "",
           })}
         >
-          <Typography>Home</Typography>
+          Home
         </NavLink>
+
         <NavLink to={"/requestLoan"}>Request for loan</NavLink>
       </Box>
-      <Box>
-        <Outlet />
-      </Box>
+      <Box>{children}</Box>
     </Box>
   );
 }
