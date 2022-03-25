@@ -24,7 +24,7 @@ function Home2() {
       }
     }
     getAccountBalance();
-  });
+  }, []);
   return (
     <Layout>
       <Box
@@ -34,8 +34,12 @@ function Home2() {
           justifyContent: "center",
           width: "100vw",
           alignItems: "center",
+          mb: 4,
         }}
       >
+        <Typography component="h3" variant="h3" sx={{ my: 4 }}>
+          Your Account
+        </Typography>
         <Box
           sx={{
             width: 3 / 6,
@@ -50,7 +54,6 @@ function Home2() {
         >
           <Typography component="h5" variant="h5">
             Your Account Balance:
-            
           </Typography>
           {accBalance && (
             <Typography component="h5" variant="h5">
@@ -58,11 +61,15 @@ function Home2() {
             </Typography>
           )}
         </Box>
-<<<<<<< HEAD
-        {/* {accLoans &&
-          accLoans.map( (loan) => {
+        <Typography component="h3" variant="h3" sx={{ my: 4 }}>
+          Loan History
+        </Typography>
+        {accLoans &&
+          accLoans.map((loan) => {
+            const { LoanId, loan_amount } = loan;
             return (
               <Box
+                key={LoanId}
                 sx={{
                   width: 3 / 6,
                   borderRadius: "0.25rem",
@@ -75,39 +82,15 @@ function Home2() {
                 }}
               >
                 <Typography component="h5" variant="h5">
-                  Your Loan Amount:
+                  Loan {LoanId}
                 </Typography>
-                {accLoans && (
-                  <Typography component="h5" variant="h5">
-                    {accLoans}
-                  </Typography>
-                )}
+
+                <Typography component="h5" variant="h5">
+                  {loan_amount}
+                </Typography>
               </Box>
             );
-          })} */}
-=======
-        <Box
-          sx={{
-            width: 3 / 6,
-            borderRadius: "0.25rem",
-            boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-            display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            mt: 4,
-            p: 4,
-          }}
-        >
-          <Typography component="h5" variant="h5">
-            Your Loan Amount:
-          </Typography>
-          {loanAmount && (
-            <Typography component="h5" variant="h5">
-              ${loanAmount}
-            </Typography>
-          )}
-        </Box>
->>>>>>> d1062ea92b8da93a0743c863aa95762e6cff6ae9
+          })}
       </Box>
     </Layout>
   );
