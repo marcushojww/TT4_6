@@ -4,8 +4,10 @@ const cors = require("cors") // import cors module
 // telling the application that its okay for backend and frontend to run on same server
 
 const backend = require("./backend");
+const dotenv = require("dotenv");
+dotenv.config();
 
-server = express(); // created a server application
+const server = express(); // created a server application
 server.use(express.json()); // use the JSON parser from express, 
 // tells the server that we want to send the info in JSON format
 server.use(cors()); // tells server to use cors
