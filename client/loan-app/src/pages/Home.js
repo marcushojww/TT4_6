@@ -1,8 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
-=======
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
->>>>>>> alvin
 import Layout from "../components/Layout";
 
 function Home() {
@@ -45,8 +42,4 @@ function Home() {
   );
 }
 
-<<<<<<< HEAD
 export default Home;
-=======
-export default Home;
->>>>>>> alvin
