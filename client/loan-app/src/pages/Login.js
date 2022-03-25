@@ -5,9 +5,16 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import "../style.css";
 
 function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [state, setstate] = useState(false);
+  const toggleBtn = () => {
+    setstate((prevState) => !prevState);
+  };
 
   const switchForm = () => {
     setIsSignUp((prev) => {
@@ -107,6 +114,9 @@ function Login() {
               id="password"
               autoComplete="current-password"
             />
+            <button className="btn" onClick={toggleBtn}>
+              {state ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </button>
             <Button
               type="submit"
               fullWidth
