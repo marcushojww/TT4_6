@@ -46,10 +46,11 @@ function Home2() {
         >
           <Typography component="h5" variant="h5">
             Your Account Balance:
+            
           </Typography>
           {accBalance && (
             <Typography component="h5" variant="h5">
-              {accBalance}
+              ${accBalance}
             </Typography>
           )}
         </Box>
@@ -70,7 +71,7 @@ function Home2() {
           </Typography>
           {loanAmount && (
             <Typography component="h5" variant="h5">
-              {loanAmount}
+              ${loanAmount}
             </Typography>
           )}
         </Box>

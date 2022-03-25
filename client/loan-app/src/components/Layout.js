@@ -60,6 +60,17 @@ function Layout({ children }) {
           >
             Request for loan
           </NavLink>
+          <NavLink
+            to={"/payback"}
+            style={({ isActive }) => ({
+              textDecoration: "none",
+              fontWeight: isActive ? "bold" : "normal",
+              color: isActive ? "white" : "grey",
+              marginLeft: "50px",
+            })}
+          >
+            Pay loans
+          </NavLink>
         </Box>
 
         <Button variant="contained" onClick={logout} sx={{ width: 100, mt: 3 }}>

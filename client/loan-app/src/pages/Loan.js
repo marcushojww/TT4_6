@@ -36,7 +36,7 @@ function Loan() {
       type: "amount",
       placeholder: "Amount",
       errorMessage: "Amount should be in values!",
-      label: "Amount",
+      label: "Amount (SGD)",
       pattern: `^[0-9]+$`,
       required: true,
     },

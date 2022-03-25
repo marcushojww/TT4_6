@@ -29,7 +29,7 @@ function Payback() {
       type: "amount",
       placeholder: "Payback Amount",
       errorMessage: "Amount should be in values!",
-      label: "Please input payback amount",
+      label: "Please input payback amount (SGD)",
       pattern: `^[0-9]+$`,
       required: true,
     },
