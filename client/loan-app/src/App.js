@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./pages/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Loan from "./pages/Loan";
