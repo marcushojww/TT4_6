@@ -17,7 +17,12 @@ function Layout() {
           alignItems: "center",
         }}
       >
-        <NavLink to={"/home"}>
+        <NavLink
+          to={"/home"}
+          style={({ isActive }) => ({
+            color: isActive ? "white" : "",
+          })}
+        >
           <Typography>Home</Typography>
         </NavLink>
         <NavLink to={"/requestLoan"}>Request for loan</NavLink>
