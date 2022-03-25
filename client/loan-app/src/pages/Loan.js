@@ -37,7 +37,7 @@ function Loan() {
       placeholder: "Amount",
       errorMessage: "Amount should be in values!",
       label: "Amount",
-      pattern: `/^[0-9]*$/`,
+      pattern: `^[0-9]+$`,
       required: true,
     },
   ];
