@@ -38,6 +38,24 @@ router.get("/customerbalance/by-cid", (request, response) => {
   );
 });
 
+// get all loans of 1 customer by customer id
+router.get("/customerloans/by-cid", (request, response) => {
+  //live database data
+  database.connection.query(
+    `select LoanId
+        from customerloan 
+        where CustomerId = '${request.query.customerId}'`, // the SQL query
+    (errors, records) => {
+      if (errors) {
+        console.log(errors);
+        response.status(500).send("An error occured in the backend");
+      } else {
+        response.status(200).send(records);
+      }
+    }
+  );
+});
+
 // getting loan_amount by loan id
 router.get("/loan_amount/by-lid", (request, response) => {
   //live database data
