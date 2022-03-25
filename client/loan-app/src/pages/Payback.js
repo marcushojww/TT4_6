@@ -5,24 +5,36 @@ import Layout from "../components/Layout";
 
 function Payback() {
   const [values, setValues] = useState({
-    username: "",
+    loanid: "",
     password: "",
     amount: "",
   });
 
   const inputs = [
 
-      {
+    {
       id: 1,
+      name: "Customer Loan ID",
+      type: "loanid",
+      placeholder: "Loan ID",
+      errorMessage: "Amount should be in values!",
+      label: "Please input loan ID",
+      pattern: `^[0-9]+$`,
+      required: true,
+    },
+
+    {
+      id: 2,
       name: "Payback Amount",
       type: "amount",
       placeholder: "Payback Amount",
       errorMessage: "Amount should be in values!",
       label: "Please input payback amount",
+      pattern: `^[0-9]+$`,
       required: true,
     },
     {
-      id: 2,
+      id: 3,
       name: "password",
       type: "password",
       placeholder: "Password",
