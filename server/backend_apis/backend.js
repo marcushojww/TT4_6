@@ -38,6 +38,7 @@ router.get("/customerbalance/by-cid", (request,response) => {
     })
 })
 
+// getting loan_amount by loan id
 router.get("/loan_amount/by-lid", (request,response) => {
 
     //live database data
