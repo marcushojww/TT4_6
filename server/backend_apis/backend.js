@@ -56,6 +56,7 @@ router.get("/loan_amount/by-lid", (request,response) => {
     })
 })
 
+// adding new loan into customerloan table and loan table(not yet done)
 router.post("/customerloan/add", (request,response) => {
 
     // live database data
@@ -74,5 +75,7 @@ router.post("/customerloan/add", (request,response) => {
         }
     )
 })
+
+
 
 module.exports = {router};  // to allow the whole module to be exported to another file
