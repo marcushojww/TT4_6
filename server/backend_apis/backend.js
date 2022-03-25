@@ -63,7 +63,7 @@ router.post("/customerloan/add", (request, response) => {
   database.connection.query(
     `Insert into 
         customerloan (CustomerLoanId, CustomerId, LoanId)
-        values (${customerloan.customerloanid},${customerLoan.customerid},'${customerLoan.loanid}')`, //the SQL query
+        values (${customerloan.customerloanid},${customerloan.customerid},'${customerloan.loanid}')`, //the SQL query
     (errors, records) => {
       if (errors) {
         console.log(errors);
@@ -75,16 +75,16 @@ router.post("/customerloan/add", (request, response) => {
   );
 });
 
-// updating payment(not done yet) and loan table with amount paid
+// updating payment(not done yet) and loan table with amount paid (not working yet)
 router.patch("/loan/update", (request, response) => {
     const { loanId } = request.params;
-    const { loanAmount } = request.body;
+    const { loanPaid } = request.body;
   
     const singleLoanData = loan.find((loanData) => LoanId === loanId); // returns the first element that is true
 
     database.connection.query(
       `Update loan
-      Set loan_amount = ${singleLoanData.loan_amount += loanAmount}
+      Set loan_amount = ${singleLoanData.loan_amount += loanPaid}
       where LoanId = ${loanId}`,
       (errors, records) => {
         if (errors) {
