@@ -12,7 +12,6 @@ import "../style.css";
 function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [state, setstate] = useState(false);
-
   const toggleBtn = () => {
     setstate((prevState) => !prevState);
   };
