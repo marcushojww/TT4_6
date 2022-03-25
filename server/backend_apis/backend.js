@@ -63,7 +63,7 @@ router.post("/customerloan/add", (request, response) => {
   database.connection.query(
     `Insert into 
         customerloan (CustomerLoanId, CustomerId, LoanId)
-        values (${customerloan.customerloanid},${customerloan.customerid},'${customerloan.loanid}')`, //the SQL query
+        values ('${customerloan.customerloanid}','${customerloan.customerid}','${customerloan.loanid}')`, //the SQL query
     (errors, records) => {
       if (errors) {
         console.log(errors);
